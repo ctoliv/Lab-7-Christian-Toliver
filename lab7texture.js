@@ -24,6 +24,26 @@ const doorNormal =
 const doorRoughness =
     loader.load("textures/door/roughness.jpg");
 
+const fireplaceColor =
+    loader.load("textures/fireplace/color.jpg");
+
+const fireplaceNormal =
+    loader.load("textures/fireplace/normal.jpg");
+
+const fireplaceRoughness =
+    loader.load("textures/fireplace/roughness.jpg");
+
+const fireplaceAO =
+    loader.load("textures/fireplace/ao.jpg");
+
+const tvStandColor =
+    loader.load("textures/tvstand/color.jpg");
+
+const tvStandNormal =
+    loader.load("textures/tvstand/normal.jpg");
+
+const tvStandRoughness =
+    loader.load("textures/tvstand/roughness.jpg");
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
@@ -222,7 +242,9 @@ scene.add(outdoorTreeLeaves);
 const tvStand = new THREE.Mesh(
 	new THREE.BoxGeometry(5, 1, 1.5),
 	new THREE.MeshStandardMaterial({
-		color: 0x3a2a20
+		map: tvStandColor,
+    	normalMap: tvStandNormal,
+    	roughnessMap: tvStandRoughness
 	})
 );
 
@@ -307,7 +329,10 @@ scene.add(magazine);
 const fireplace = new THREE.Mesh(
 	new THREE.BoxGeometry(4, 3, 1),
 	new THREE.MeshStandardMaterial({
-		color: 0x555555
+		map: fireplaceColor,
+    	normalMap: fireplaceNormal,
+    	roughnessMap: fireplaceRoughness,
+    	aoMap: fireplaceAO
 	})
 );
 
