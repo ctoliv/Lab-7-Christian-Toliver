@@ -3,6 +3,27 @@ const loader = new THREE.TextureLoader();
 //
 // SCENE
 //
+const floorColor =
+    loader.load("textures/floor/color.jpg");
+
+const floorNormal =
+    loader.load("textures/floor/normal.jpg");
+
+const floorRoughness =
+    loader.load("textures/floor/roughness.jpg");
+
+const floorAO =
+    loader.load("textures/floor/ao.jpg");
+
+const doorColor =
+    loader.load("textures/door/color.jpg");
+
+const doorNormal =
+    loader.load("textures/door/normal.jpg");
+
+const doorRoughness =
+    loader.load("textures/door/roughness.jpg");
+
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
@@ -69,7 +90,10 @@ scene.add(fireplaceLight);
 const floor = new THREE.Mesh(
 	new THREE.PlaneGeometry(24, 24),
 	new THREE.MeshStandardMaterial({
-		color: 0x8b5a2b
+		map: floorColor,
+    	normalMap: floorNormal,
+    	roughnessMap: floorRoughness,
+    	aoMap: floorAO
 	})
 );
 
@@ -311,7 +335,9 @@ scene.add(fire);
 const door = new THREE.Mesh(
 	new THREE.BoxGeometry(2, 4, 0.15),
 	new THREE.MeshStandardMaterial({
-		color: 0x5b3a29
+		map: doorColor,
+    	normalMap: doorNormal,
+    	roughnessMap: doorRoughness
 	})
 );
 
