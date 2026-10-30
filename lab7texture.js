@@ -45,6 +45,18 @@ const tvStandNormal =
 const tvStandRoughness =
     loader.load("textures/tvstand/roughness.jpg");
 
+const frameColor =
+    loader.load("textures/windowframe/color.jpg");
+
+const frameNormal =
+    loader.load("textures/windowframe/normal.jpg");
+
+const frameRoughness =
+    loader.load("textures/windowframe/roughness.jpg");	
+
+const outdoorTexture =
+    loader.load("textures/window/outside.jpg");
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
 
@@ -173,7 +185,9 @@ createWall(12, 4, 0, 0.5, 8, 24);
 //
 
 const windowFrameMaterial = new THREE.MeshStandardMaterial({
-	color: 0x4a3527
+	map: frameColor,
+    normalMap: frameNormal,
+    roughnessMap: frameRoughness
 });
 
 const windowGlassMaterial = new THREE.MeshPhysicalMaterial({
@@ -211,7 +225,7 @@ function createWindow(x) {
 }
 
 [-8, 0, 8].forEach(createWindow);
-
+/*
 // Exterior scenery sits behind the back wall and is visible through the panes.
 const outdoorGround = new THREE.Mesh(
 	new THREE.PlaneGeometry(200, 200),
@@ -234,6 +248,23 @@ const outdoorTreeLeaves = new THREE.Mesh(
 );
 outdoorTreeLeaves.position.set(8, 6, -32);
 scene.add(outdoorTreeLeaves);
+*/
+
+const outdoorView =
+    new THREE.Mesh(
+        new THREE.PlaneGeometry(24, 8),
+        new THREE.MeshBasicMaterial({
+            map: outdoorTexture
+        })
+    );
+
+outdoorView.position.set(
+    0,
+    4,
+    -12.3
+);
+
+scene.add(outdoorView);
 
 //
 // TV STAND
